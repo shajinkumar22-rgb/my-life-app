@@ -3,41 +3,10 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [files, setFiles] = useState<any[]>([]);
-
-  const handleUpload = (e: any) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const url = URL.createObjectURL(file);
-    setFiles([...files, { file, url }]);
-  };
-
+ export default function Home() {
   return (
-    <main style={{ padding: "20px", textAlign: "center" }}>
-      <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>
-        My Life
-      </h1>
-
-      <input
-        type="file"
-        onChange={handleUpload}
-        style={{ marginTop: "20px" }}
-      />
-
-      <div style={{ marginTop: "30px" }}>
-        {files.length === 0 && <p>No files uploaded yet</p>}
-
-        {files.map((f, i) => (
-          <div key={i} style={{ marginBottom: "15px" }}>
-            {f.file.type.startsWith("image") ? (
-              <img src={f.url} width={250} />
-            ) : (
-              <video src={f.url} width={250} controls />
-            )}
-          </div>
-        ))}
-      </div>
+    <main>
+      <h1>My Life App</h1>
     </main>
   );
 }
