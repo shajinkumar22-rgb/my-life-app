@@ -10,7 +10,6 @@ export default function Home() {
     if (!file) return;
 
     const url = URL.createObjectURL(file);
-
     setFiles([...files, { file, url }]);
   };
 
@@ -19,8 +18,6 @@ export default function Home() {
       <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>
         My Life
       </h1>
-
-      <p>Upload and preview your images/videos</p>
 
       <input
         type="file"
@@ -34,19 +31,9 @@ export default function Home() {
         {files.map((f, i) => (
           <div key={i} style={{ marginBottom: "15px" }}>
             {f.file.type.startsWith("image") ? (
-              <img
-                src={f.url}
-                alt="preview"
-                width={250}
-                style={{ borderRadius: "10px" }}
-              />
+              <img src={f.url} width={250} />
             ) : (
-              <video
-                src={f.url}
-                width={250}
-                controls
-                style={{ borderRadius: "10px" }}
-              />
+              <video src={f.url} width={250} controls />
             )}
           </div>
         ))}
